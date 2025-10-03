@@ -1,9 +1,11 @@
-import "./App.css";
+import Navbar from "./components/Navbar.component";
 
 function App() {
   return (
     <>
-      <div className="text-2xl">Hola mundo</div>
+      <div className="bg-black min-h-screen">
+        <Navbar />
+      </div>
     </>
   );
 }

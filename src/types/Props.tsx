@@ -6,3 +6,7 @@ export interface CardProps {
   link?: string;
   size?: "small" | "medium" | "large" | "extralarge" | "full";
 }
+
+export interface SlideProps {
+  className?: string;
+}

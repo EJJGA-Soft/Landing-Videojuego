@@ -1,5 +1,6 @@
 import Card from "./components/Card.component";
 import Navbar from "./components/Navbar.component";
+import Carousel3D, { TripleSlider } from "./components/Carousel.component";
 
 function App() {
   const name = "Vampyr: Rise of the Night Walkers";
@@ -8,6 +9,8 @@ function App() {
       <div className="bg-black min-h-screen">
         <Navbar />
         <div className="px-15">
+          <Carousel3D className="" />
+          <TripleSlider />
           <Card
             title={`¿De que trata ${name}?`}
             description="Un prisionero de origen incierto despierta en un castillo maldito en ruinas, 
@@ -17,7 +20,9 @@ function App() {
                         el trono como su nuevo soberano."
             size="extralarge"
           />
-          <h1 className="text-white text-2xl font-bold mt-10 text-center uppercase">Personajes</h1>
+          <h1 className="text-white text-2xl font-bold mt-10 text-center uppercase">
+            Personajes
+          </h1>
 
           <div className="grid place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-15">
             <Card

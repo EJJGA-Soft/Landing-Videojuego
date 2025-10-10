@@ -91,7 +91,6 @@ export function Carousel3D({ ...props }: SlideProps) {
 export function TripleSlider() {
   return (
     <div className="max-w-6xl mx-auto py-12">
-      <h2 className="text-white text-2xl mb-6">Triple Slider — Highlights</h2>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         loop={true}

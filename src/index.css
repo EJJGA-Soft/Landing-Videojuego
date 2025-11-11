@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+/* Estilos personalizados para las flechas del carrusel */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #dc2626 !important; /* Rojo intenso */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ef4444 !important; /* Rojo más claro al hover */
+}
+
+/* Estilos para la paginación */
+.swiper-pagination-bullet {
+  background-color: #dc2626 !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #dc2626 !important;
+  opacity: 1;
+}
+
+/* Colocar los bullets de la galería por debajo del slider */
+.triple-swiper .swiper-pagination {
+  position: static !important; /* quitar posicionamiento absoluto */
+  margin-top: 0.75rem; /* separarlos del slider */
+  transform: none !important;
+  display: flex;
+  justify-content: center;
+}
+
+.triple-swiper .swiper-pagination-bullet {
+  margin: 0 0.25rem;
+}

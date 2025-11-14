@@ -1,65 +1,54 @@
-import Card from "./components/Card.component";
-import Navbar from "./components/Navbar.component";
-import Carousel3D from "./components/Carousel.component";
-import StatsSection from "./components/StatsSection.component";
-import GallerySection from "./components/GallerySection.component";
-import MechanicsSection from "./components/MechanicsSection.component";
-import ControlsSection from "./components/ControlsSection.component";
-import LocationsSection from "./components/LocationsSection.component";
-import backgroundImage from "./assets/Fondo_sin_letras.jpeg";
-import catacumbasImage from "./assets/locaciones/catacumbas.jpg";
-import tronosImage from "./assets/locaciones/tronos.jpg";
-import castilloImage from "./assets/locaciones/castillo.jpg";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import HeroSection from "./components/sections/HeroSection";
+import AboutSection from "./components/sections/AboutSection";
+import StorySection from "./components/sections/StorySection";
+import CharactersSection from "./components/sections/CharactersSection";
+import MechanicsSection from "./components/sections/MechanicsSection";
+import EnemiesSection from "./components/sections/EnemiesSection";
+import GallerySection from "./components/sections/GallerySection";
+import LocationsSection from "./components/sections/LocationsSection";
+import AppSection from "./components/sections/AppSection";
+import FAQSection from "./components/sections/FAQSection";
+import TeamSection from "./components/sections/TeamSection";
+import StatsSection from "./components/sections/StatsSection";
+import ContactSection from "./components/sections/ContactSection";
 
-function App() {
-	const name = "Vampyr: Rise of the Night Walkers";
-	return (
-		<>
-			<div
-				style={{
-					minHeight: "100vh",
-					width: "100%",
-					backgroundColor: "rgba(0, 0, 0, 0.8)",
-					backgroundImage: `url(${backgroundImage})`,
-					backgroundSize: "cover",
-					backgroundPosition: "center center",
-					backgroundRepeat: "no-repeat",
-					backgroundAttachment: "fixed",
-				}}
-			>
-				<Navbar />
-				<div className="px-4 md:px-8 lg:px-0">
-					<Carousel3D className="" />
+import catacumbas from "./assets/locaciones/catacumbas.jpg";
+import salaDelTrono from "./assets/locaciones/tronos.jpg";
+import salidaDelCastillo from "./assets/locaciones/castillo.jpg";
 
-					<section className="max-w-7xl mx-auto py-16">
-						<div className="text-center mb-12">
-							<h2 className="text-red-100 text-5xl font-bold mb-4 uppercase drop-shadow-[0_0_20px_rgba(220,38,38,1)]">
-								{name}
-							</h2>
-							<div className="w-32 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto mb-8"></div>
-						</div>
-						<div className="flex align-middle justify-center">
-							<Card
-								title="La Historia"
-								description={`Adrián, un cazador convertido en vampiro, despierta atrapado en la celda más profunda del castillo de Drácula. Su aldea fue masacrada por Brauner, un Caballero de Sangre de élite. Entrenado por un misterioso Mentor, Adrián adoptó el vampirismo para obtener el poder necesario y vengar a su familia. Ahora debe escapar, enfrentar a las criaturas de la noche, recolectar armas y ascender hasta la cima de la fortaleza para ejecutar su venganza contra Drácula.`}
-								size="extralarge"
-							/>
-						</div>
-					</section>
+export default function App() {
+  const locationImages = [catacumbas, salaDelTrono, salidaDelCastillo];
 
-					<StatsSection />
+  return (
+    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-950/20 to-purple-950/30"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/10 via-transparent to-transparent"></div>
+      </div>
 
-					<GallerySection />
+      <div className="relative z-10">
+        <Navbar />
 
-					<MechanicsSection />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <StorySection />
+          <CharactersSection />
+          <MechanicsSection />
+          <EnemiesSection />
+          <GallerySection />
+          <LocationsSection images={locationImages} />
+          <StatsSection />
+          <AppSection />
+          <FAQSection />
+          <ContactSection />
+          <TeamSection />
+        </main>
 
-					<ControlsSection />
-
-					<LocationsSection images={[catacumbasImage, tronosImage, castilloImage]} />
-				</div>
-			</div>
-		</>
-	);
+        <Footer />
+      </div>
+    </div>
+  );
 }
-
-export default App;

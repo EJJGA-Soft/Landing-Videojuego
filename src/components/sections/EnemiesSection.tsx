@@ -63,7 +63,7 @@ export default function EnemiesSection() {
           ))}
         </div>
 
-        <div className="mt-12 max-w-3xl mx-auto">
+        <div className="mt-12 max-w-3xl mx-auto mb-10">
           <div className="bg-gradient-to-r from-red-950/40 to-black/60 p-6 rounded-xl border border-red-900/30">
             <p className="text-gray-300 text-center">
               <span className="text-red-400 font-bold flex items-center gap-2 justify-center">

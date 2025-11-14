@@ -2,6 +2,7 @@ import { FaMobileAlt } from 'react-icons/fa';
 import { Carousel3D } from "../shared/Carousel";
 import Button from "../shared/Button";
 import { GAME_INFO } from "../../constants/app.constants";
+import titleImage from "../../assets/title.png";
 
 export default function HeroSection() {
   const scrollToApp = () => {
@@ -19,15 +20,15 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 text-center">
         <div className="max-w-5xl mx-auto">
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-red-400 via-purple-400 to-purple-600 bg-clip-text text-transparent">
-              {GAME_INFO.title}
-            </span>
-          </h1>
+          <div className="flex justify-center mb-8">
+            <img 
+              src={titleImage} 
+              alt={GAME_INFO.title}
+              className="w-full max-w-2xl h-55 object-contain drop-shadow-2xl animate-pulse-slow"
+            />
+          </div>
 
-          <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 mb-4 font-semibold">
-            {GAME_INFO.tagline}
-          </p>
+         
 
           <p className="text-lg sm:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             {GAME_INFO.description}

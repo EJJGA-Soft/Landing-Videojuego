@@ -1,4 +1,3 @@
-import { FaEnvelope } from 'react-icons/fa';
 import SectionHeader from "../shared/SectionHeader";
 import { TEAM_MEMBERS } from "../../data/team.data";
 
@@ -8,7 +7,7 @@ export default function TeamSection() {
   };
 
   return (
-    <section id="team" className="scroll-mt-20">
+    <section id="team" className="py-20 scroll-mt-20 mb-10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title="Equipo de Desarrollo"
@@ -38,20 +37,7 @@ export default function TeamSection() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-purple-950/40 to-black/60 p-8 rounded-xl border border-purple-900/30 inline-block max-w-2xl">
-            <p className="text-gray-300 text-lg mb-6">
-              ¿Quieres unirte a nuestro equipo o colaborar en el proyecto?
-            </p>
-            <a
-              href="mailto:team@vampyrgame.com"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              <FaEnvelope className="inline mr-2" />
-              Contáctanos
-            </a>
-          </div>
-        </div>
+      
       </div>
     </section>
   );

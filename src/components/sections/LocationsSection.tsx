@@ -25,7 +25,7 @@ export default function LocationsSection({ images }: Props) {
   ];
 
   return (
-    <section id="locations" className=" scroll-mt-20 bg-gradient-to-b from-black via-purple-950/10 to-black">
+    <section id="locations" className="py-20 scroll-mt-20 bg-gradient-to-b from-black via-purple-950/10 to-black">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title="Locaciones del Castillo"

@@ -3,7 +3,7 @@ import { GAME_STORY } from "../../data/gameInfo.data";
 
 export default function StorySection() {
   return (
-    <section id="story" className=" scroll-mt-20">
+    <section id="story" className="py-20 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title={GAME_STORY.title}

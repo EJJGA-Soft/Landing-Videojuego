@@ -1,4 +1,5 @@
 import { GAME_INFO, SOCIAL_LINKS } from "../../constants/app.constants";
+import logo from "../../assets/logo.png";
 
 export default function Footer() {
   return (
@@ -7,9 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-red-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              {GAME_INFO.title}
-            </h3>
+            <img 
+              src={logo} 
+              alt={GAME_INFO.title}
+              className="h-16 w-auto object-contain mb-4"
+            />
             <p className="text-gray-400 mb-4">
               {GAME_INFO.tagline}
             </p>

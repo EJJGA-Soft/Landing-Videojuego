@@ -26,7 +26,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: 2,
     name: "José Martínez",
     role: "Mobile Developer & Backend Engineer",
-    description: "Desarrollador de la app móvil companion y sistemas backend. Especialista en sincronización en tiempo real.",
+    description: "Desarrollador de la app móvil y web con sistemas backend. Especialista en sincronización en tiempo real.",
     social: {
       github: "#",
       linkedin: "#"
@@ -54,7 +54,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: 5,
     name: "Joshua Romero",
     role: "Sound Designer & Composer",
-    description: "Compositora de la banda sonora original y diseñadora de efectos de sonido. Especialista en música atmosférica.",
+    description: "Compositor de la banda sonora original y diseñador de efectos de sonido. Especialista en música atmosférica.",
     social: {
       portfolio: "#"
     }

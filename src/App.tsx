@@ -13,6 +13,7 @@ import FAQSection from "./components/sections/FAQSection";
 import TeamSection from "./components/sections/TeamSection";
 import StatsSection from "./components/sections/StatsSection";
 import ContactSection from "./components/sections/ContactSection";
+import PWABadge from "./components/shared/PWABadge";
 
 import catacumbas from "./assets/locaciones/catacumbas.jpg";
 import salaDelTrono from "./assets/locaciones/tronos.jpg";
@@ -24,7 +25,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-950/20 to-purple-950/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-950/20 to-red-950/30"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/10 via-transparent to-transparent"></div>
       </div>
 
@@ -48,6 +49,7 @@ export default function App() {
         </main>
 
         <Footer />
+        <PWABadge />
       </div>
     </div>
   );

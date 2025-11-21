@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 import SectionHeader from "../shared/SectionHeader";
+import { GRADIENTS } from "../../constants/theme.constants";
 
 interface FormData {
   name: string;
@@ -55,7 +56,6 @@ export default function ContactSection() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Limpiar error del campo al escribir
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -99,7 +99,6 @@ export default function ContactSection() {
         message: ''
       });
 
-      // Resetear el estado de éxito después de 5 segundos
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
@@ -114,12 +113,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-4 scroll-mt-20 bg-gradient-to-b from-black via-red-950/10 to-black">
+    <section id="contact" className={`py-4 scroll-mt-20 ${GRADIENTS.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title="Contáctanos"
           subtitle="¿Tienes preguntas, sugerencias o quieres colaborar? Nos encantaría saber de ti"
-          gradient="redPurple"
+          gradient="redred"
         />
 
         <div className="max-w-3xl mx-auto">
@@ -138,7 +137,7 @@ export default function ContactSection() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-gradient-to-br from-purple-950/40 via-black/60 to-red-950/40 border border-purple-900/30 rounded-xl p-8 shadow-2xl">
+            <form onSubmit={handleSubmit} className="bg-gradient-to-br from-red-950/40 via-black/60 to-red-950/40 border border-red-900/30 rounded-xl p-8 shadow-2xl">
               {/* Nombre */}
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-300 font-medium mb-2">
@@ -151,8 +150,8 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 bg-black/50 border ${
-                    errors.name ? 'border-red-500' : 'border-purple-900/30'
-                  } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors duration-200`}
+                    errors.name ? 'border-red-500' : 'border-red-900/30'
+                  } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors duration-200`}
                   placeholder="Tu nombre completo"
                   disabled={isSubmitting}
                 />
@@ -173,8 +172,8 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 bg-black/50 border ${
-                    errors.email ? 'border-red-500' : 'border-purple-900/30'
-                  } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors duration-200`}
+                    errors.email ? 'border-red-500' : 'border-red-900/30'
+                  } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors duration-200`}
                   placeholder="tu@email.com"
                   disabled={isSubmitting}
                 />
@@ -194,7 +193,7 @@ export default function ContactSection() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-black/50 border border-purple-900/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors duration-200"
+                  className="w-full px-4 py-3 bg-black/50 border border-red-900/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors duration-200"
                   placeholder="¿De qué quieres hablar?"
                   disabled={isSubmitting}
                 />
@@ -212,8 +211,8 @@ export default function ContactSection() {
                   onChange={handleChange}
                   rows={6}
                   className={`w-full px-4 py-3 bg-black/50 border ${
-                    errors.message ? 'border-red-500' : 'border-purple-900/30'
-                  } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors duration-200 resize-none`}
+                    errors.message ? 'border-red-500' : 'border-red-900/30'
+                  } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors duration-200 resize-none`}
                   placeholder="Cuéntanos más sobre tu consulta o sugerencia..."
                   disabled={isSubmitting}
                 />
@@ -233,7 +232,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-4 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-500 hover:to-purple-500 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                className="w-full px-6 py-4 bg-gradient-to-r from-red-600 to-red-600 hover:from-red-500 hover:to-red-500 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
                 {isSubmitting ? (
                   <>

@@ -8,7 +8,7 @@ export default function GallerySection() {
         <SectionHeader 
           title="Galería de Personajes"
           subtitle="Explora visualmente a todos los habitantes del castillo"
-          gradient="purpleWhite"
+          gradient="redWhite"
         />
         <TripleSlider />
       </div>

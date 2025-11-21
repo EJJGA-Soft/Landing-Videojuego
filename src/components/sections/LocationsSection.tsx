@@ -1,5 +1,6 @@
 import SectionHeader from "../shared/SectionHeader";
 import Card from "../shared/Card";
+import { GRADIENTS } from "../../constants/theme.constants";
 
 type Props = {
   images: string[];
@@ -25,7 +26,7 @@ export default function LocationsSection({ images }: Props) {
   ];
 
   return (
-    <section id="locations" className="py-20 scroll-mt-20 bg-gradient-to-b from-black via-purple-950/10 to-black">
+    <section id="locations" className={`py-20 scroll-mt-20 ${GRADIENTS.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title="Locaciones del Castillo"
@@ -33,7 +34,7 @@ export default function LocationsSection({ images }: Props) {
           gradient="purpleWhite"
         />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 place-items-center sm:place-items-stretch">
           {locations.map((location, index) => (
             <Card
               key={index}

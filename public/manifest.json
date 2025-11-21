@@ -1,0 +1,25 @@
+{
+  "name": "Vampyr: Rise Of The Night Walkers",
+  "short_name": "Vampyr ROTNW",
+  "description": "Un juego RogueLike/Metroidvania de acción y venganza. Caza vampiros, explora catacumbas y enfrenta a Drácula.",
+  "theme_color": "#dc2626",
+  "background_color": "#000000",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

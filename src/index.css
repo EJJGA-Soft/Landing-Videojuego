@@ -8,10 +8,10 @@
   --color-red-dark: #991b1b;
   --color-red-light: #ef4444;
   
-  /* Secondary Colors - Purple */
-  --color-purple-primary: #9333ea;
-  --color-purple-dark: #7e22ce;
-  --color-purple-light: #a855f7;
+  /* Secondary Colors - red */
+  --color-red-primary: #ea3333;
+  --color-red-dark: #ce2222;
+  --color-red-light: #f75555;
   
   /* Neutral Colors */
   --color-black: #000000;
@@ -21,9 +21,9 @@
   --color-gray-light: #9ca3af;
   
   /* Gradients */
-  --gradient-hero: linear-gradient(135deg, #dc2626 0%, #7e22ce 50%, #000000 100%);
-  --gradient-primary: linear-gradient(135deg, #ef4444 0%, #9333ea 100%);
-  --gradient-secondary: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+  --gradient-hero: linear-gradient(135deg, #dc2626 0%, #ce2222 50%, #000000 100%);
+  --gradient-primary: linear-gradient(135deg, #ef4444 0%, #ea3333 100%);
+  --gradient-secondary: linear-gradient(135deg, #ea3333 0%, #ce2222 100%);
 }
 
 
@@ -52,18 +52,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #dc2626 0%, #9333ea 50%, #7e22ce 100%);
+  background: linear-gradient(180deg, #dc2626 0%, #ea3333 50%, #000000 100%);
   border-radius: 6px;
   border: 2px solid var(--color-black);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ef4444 0%, #a855f7 50%, #9333ea 100%);
+  background: linear-gradient(180deg, #ef4444 0%, #a855f7 50%, #000000 100%);
 }
 
 /* Selection */
 ::selection {
-  background-color: rgba(147, 51, 234, 0.4);
+  background-color: rgba(234, 51, 51, 0.4);
   color: var(--color-white);
 }
 
@@ -72,7 +72,7 @@ body {
   color: var(--color-white);
 }
 
-/* Swiper Custom Styles - Red/Purple Theme */
+/* Swiper Custom Styles - Red/red Theme */
 .swiper {
   width: 100%;
   height: 100%;
@@ -82,14 +82,14 @@ body {
 .swiper-button-next,
 .swiper-button-prev {
   padding: 10px;
-  color: #a855f7 !important;
-  background: rgba(147, 51, 234, 0.2) !important;
+  color: #f75555 !important;
+  background: rgba(234, 51, 51, 0.2) !important;
   width: 50px !important;
   height: 50px !important;
   border-radius: 50% !important;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(147, 51, 234, 0.3) !important;
+  border: 2px solid rgba(234, 51, 51, 0.3) !important;
   transition: all 0.3s ease !important;
 }
 
@@ -109,7 +109,7 @@ body {
 
 /* Swiper Pagination */
 .swiper-pagination-bullet {
-  background: rgba(147, 51, 234, 0.5) !important;
+  background: rgba(234, 51, 51, 0.5) !important;
   width: 12px !important;
   height: 12px !important;
   opacity: 0.6 !important;
@@ -117,11 +117,11 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-  background: linear-gradient(135deg, #dc2626, #9333ea) !important;
+  background: linear-gradient(135deg, #dc2626, #ea3333) !important;
   opacity: 1 !important;
   width: 32px !important;
   border-radius: 6px !important;
-  box-shadow: 0 0 15px rgba(147, 51, 234, 0.6) !important;
+  box-shadow: 0 0 15px rgba(234, 51, 51, 0.6) !important;
 }
 
 /* Triple Slider Pagination Fix */
@@ -143,19 +143,19 @@ body {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+    box-shadow: 0 0 20px rgba(234, 51, 51, 0.4);
   }
   50% {
     box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
   }
 }
 
-@keyframes pulse-red-purple {
+@keyframes pulse-red-red {
   0%, 100% {
     box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
   }
   50% {
-    box-shadow: 0 0 0 20px rgba(147, 51, 234, 0);
+    box-shadow: 0 0 0 20px rgba(234, 51, 51, 0);
   }
 }
 
@@ -169,7 +169,7 @@ body {
 }
 
 .animate-pulse-custom {
-  animation: pulse-red-purple 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-red-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Loading States */
@@ -195,13 +195,13 @@ body {
 
 /* Focus States */
 *:focus {
-  outline: 2px solid rgba(147, 51, 234, 0.5);
+  outline: 2px solid rgba(234, 51, 51, 0.5);
   outline-offset: 2px;
 }
 
 button:focus,
 a:focus {
-  outline: 2px solid rgba(147, 51, 234, 0.6);
+  outline: 2px solid rgba(234, 51, 51, 0.6);
   outline-offset: 4px;
 }
 

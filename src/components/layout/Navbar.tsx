@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
+import { SHADOW_CLASSES } from '../../constants/theme.constants';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -91,8 +92,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-gradient-to-r from-purple-950/95 via-black/95 to-purple-950/95 backdrop-blur-lg shadow-xl shadow-purple-900/30"
-          : "bg-gradient-to-r from-purple-950/60 via-black/60 to-purple-950/60 backdrop-blur-sm"
+          ? `bg-gradient-to-r from-red-950/95 via-black/95 to-red-950/95 backdrop-blur-lg ${SHADOW_CLASSES.base}`
+          : "bg-gradient-to-r from-red-950/60 via-black/60 to-red-950/60 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +103,7 @@ export default function Navbar() {
             className="flex items-center space-x-2 group"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-purple-600/20 blur-xl group-hover:bg-purple-500/30 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-red-600/20 blur-xl group-hover:bg-red-500/30 transition-all duration-300"></div>
               <img 
                 src={logo} 
                 alt="Vampyr Logo" 
@@ -118,12 +119,12 @@ export default function Navbar() {
                 onClick={(e) => scrollToSection(link.id, e)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 relative group focus:outline-none ${
                   activeSection === link.id
-                    ? "text-white bg-purple-900/50 border-b-2 border-purple-500"
-                    : "text-gray-300 hover:text-white hover:bg-purple-900/30"
+                    ? "text-white bg-red-900/50 border-b-2 border-red-500"
+                    : "text-gray-300 hover:text-white hover:bg-red-900/30"
                 }`}
               >
                 <span className="relative z-10">{link.label}</span>
-                <div className={`absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/10 to-purple-600/0 transition-opacity duration-300 rounded-lg ${
+                <div className={`absolute inset-0 bg-gradient-to-r from-red-600/0 via-red-600/10 to-red-600/0 transition-opacity duration-300 rounded-lg ${
                   activeSection === link.id ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                 }`}></div>
               </button>
@@ -132,7 +133,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-purple-900/30 transition-colors duration-200"
+            className="lg:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-red-900/30 transition-colors duration-200"
             aria-label="Toggle menu"
           >
             <svg
@@ -168,15 +169,15 @@ export default function Navbar() {
             : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <div className="px-4 pt-2 pb-4 space-y-1 bg-gradient-to-b from-purple-950/95 to-black/95 backdrop-blur-lg border-t border-purple-900/30">
+        <div className="px-4 pt-2 pb-4 space-y-1 bg-gradient-to-b from-red-950/95 to-black/95 backdrop-blur-lg border-t border-red-900/30">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={(e) => scrollToSection(link.id, e)}
               className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 focus:outline-none ${
                 activeSection === link.id
-                  ? "text-white bg-purple-900/50 border-l-4 border-purple-500"
-                  : "text-gray-300 hover:text-white hover:bg-purple-900/30"
+                  ? "text-white bg-red-900/50 border-l-4 border-red-500"
+                  : "text-gray-300 hover:text-white hover:bg-red-900/30"
               }`}
             >
               {link.label}

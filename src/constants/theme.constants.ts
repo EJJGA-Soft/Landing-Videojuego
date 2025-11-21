@@ -1,4 +1,3 @@
-// Theme Colors - Paleta Rojo-Negro-Blanco
 export const COLORS = {
   primary: {
     red: {
@@ -106,6 +105,7 @@ export const TYPOGRAPHY = {
     redWhite200: 'bg-gradient-to-r from-red-200 via-white to-red-200 bg-clip-text text-transparent',
     redWhite300: 'bg-gradient-to-r from-red-300 via-white to-red-300 bg-clip-text text-transparent',
     redLight: 'bg-gradient-to-r from-red-300 via-red-300 to-red-400 bg-clip-text text-transparent',
+    purpleWhite: 'bg-gradient-to-r from-purple-300 via-white to-purple-300 bg-clip-text text-transparent',
   },
   colors: {
     white: 'text-white',

@@ -1,22 +1,23 @@
 import { GiCrossedSwords } from 'react-icons/gi';
 import SectionHeader from "../shared/SectionHeader";
 import { ENEMIES } from "../../data/characters.data";
+import { GRADIENTS, BG_CLASSES, BORDER_CLASSES, SHADOW_CLASSES } from "../../constants/theme.constants";
 
 export default function EnemiesSection() {
   return (
-    <section id="enemies" className="py-20 md:py-2 scroll-mt-20 bg-gradient-to-b from-black via-red-950/10 to-black">
+    <section id="enemies" className={`py-20 md:py-2 scroll-mt-20 ${GRADIENTS.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title="Enemigos y Bestias"
           subtitle="Criaturas de la noche que habitan el castillo maldito"
-          gradient="redPurple"
+          gradient="redred"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {ENEMIES.map((enemy) => (
             <div 
               key={enemy.id}
-              className="group relative bg-gradient-to-b from-red-950/40 via-black/60 to-black/80 rounded-xl overflow-hidden border border-red-900/30 hover:border-red-500/50 shadow-lg hover:shadow-red-600/30 transition-all duration-300 hover:scale-105"
+              className={`group relative ${BG_CLASSES.cardGradient} rounded-xl overflow-hidden ${BORDER_CLASSES.hover} ${SHADOW_CLASSES.hover} transition-all duration-300 hover:scale-105`}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -53,7 +54,7 @@ export default function EnemiesSection() {
                     {enemy.stats.special && (
                       <div className="flex justify-between text-xs">
                         <span className="text-gray-400">Drop:</span>
-                        <span className="text-purple-300 font-semibold">{enemy.stats.special}</span>
+                        <span className="text-red-300 font-semibold">{enemy.stats.special}</span>
                       </div>
                     )}
                   </div>
@@ -64,7 +65,7 @@ export default function EnemiesSection() {
         </div>
 
         <div className="mt-12 max-w-3xl mx-auto mb-10">
-          <div className="bg-gradient-to-r from-red-950/40 to-black/60 p-6 rounded-xl border border-red-900/30">
+          <div className={`${BG_CLASSES.section} p-6 rounded-xl ${BORDER_CLASSES.default}`}>
             <p className="text-gray-300 text-center">
               <span className="text-red-400 font-bold flex items-center gap-2 justify-center">
                 <GiCrossedSwords className="text-red-400" />

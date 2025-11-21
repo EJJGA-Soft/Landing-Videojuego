@@ -114,17 +114,17 @@ export function Carousel3D({ ...props }: SlideProps) {
         >
           {slides.map((s) => (
             <SwiperSlide key={s.id} style={{ width: "60vw", height: "90vh" }}>
-              <div className="group h-full rounded-3xl p-6 shadow-2xl bg-gradient-to-b from-purple-950/40 via-black/60 to-black/80 border border-purple-900/30 hover:border-purple-500/50 hover:shadow-purple-600/30 flex flex-col transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
-                <div className="relative flex-1 flex items-center justify-center bg-purple-950/10 rounded-xl overflow-hidden border border-purple-900/20">
+              <div className="group h-full rounded-3xl p-6 shadow-2xl bg-gradient-to-b from-red-950/40 via-black/60 to-black/80 border border-red-900/30 hover:border-red-500/50 hover:shadow-red-600/30 flex flex-col transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+                <div className="relative flex-1 flex items-center justify-center bg-red-950/10 rounded-xl overflow-hidden border border-red-900/20">
                   {s.image ? (
                     <img
                       src={s.image}
                       alt={s.title}
-                      className="max-w-[55vw] max-h-[60vh] object-contain drop-shadow-[0_0_20px_rgba(147,51,234,0.6)] group-hover:scale-105 transition-transform duration-500"
+                      className="max-w-[55vw] max-h-[60vh] object-contain drop-shadow-[0_0_20px_rgba(255, 0, 43, 0.92)] group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-56 h-56 bg-purple-950/50 rounded-md" />
+                    <div className="w-56 h-56 bg-red-950/50 rounded-md" />
                   )}
                 </div>
               </div>
@@ -156,18 +156,18 @@ export function TripleSlider() {
       >
         {slides.map((s) => (
           <SwiperSlide key={`tr-${s.id}`}>
-            <div className="group relative bg-gradient-to-b from-purple-950/40 via-black/60 to-black/80 rounded-xl p-4 h-80 flex flex-col border border-purple-900/30 hover:border-purple-500/50 shadow-lg shadow-purple-900/20 hover:shadow-purple-600/30 transition-all duration-300 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-              <div className="relative flex-1 flex items-center justify-center bg-purple-950/10 rounded-lg border border-purple-900/20">
+            <div className="group relative bg-gradient-to-b from-red-950/40 via-black/60 to-black/80 rounded-xl p-4 h-80 flex flex-col border border-red-900/30 hover:border-red-500/50 shadow-lg shadow-red-900/20 hover:shadow-red-600/30 transition-all duration-300 hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              <div className="relative flex-1 flex items-center justify-center bg-red-950/10 rounded-lg border border-red-900/20">
                 <img
                   src={s.image}
                   alt={s.title}
-                  className="w-32 h-32 object-contain drop-shadow-[0_0_15px_rgba(147,51,234,0.5)] group-hover:scale-110 transition-transform duration-500"
+                  className="w-32 h-32 object-contain drop-shadow-[0_0_15px_rgba(255, 0, 43, 0.92)] group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="relative mt-3">
-                <h3 className="text-white font-bold text-lg group-hover:text-purple-200 transition-colors duration-200">{s.title}</h3>
-                <p className="text-purple-400 text-xs font-medium mt-1">{s.tag}</p>
+                <h3 className="text-white font-bold text-lg group-hover:text-red-200 transition-colors duration-200">{s.title}</h3>
+                <p className="text-red-400 text-xs font-medium mt-1">{s.tag}</p>
                 <p className="text-gray-300 text-xs mt-2 line-clamp-2">{s.description}</p>
               </div>
             </div>

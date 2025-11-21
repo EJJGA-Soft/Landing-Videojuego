@@ -1,4 +1,5 @@
 import React from 'react';
+import { BG_CLASSES, SHADOW_CLASSES } from '../../constants/theme.constants';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -24,10 +25,10 @@ export default function Button({
   const baseClass = "inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variantClass = {
-    primary: "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-red-500/50",
-    secondary: "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white shadow-lg hover:shadow-purple-500/50",
-    outline: "border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 hover:border-purple-400",
-    gradient: "bg-gradient-to-r from-red-500 via-purple-500 to-purple-600 hover:from-red-400 hover:via-purple-400 hover:to-purple-500 text-white shadow-xl hover:shadow-purple-500/50"
+    primary: `${BG_CLASSES.button.primary} ${BG_CLASSES.button.primaryHover} text-white ${SHADOW_CLASSES.button.primary}`,
+    secondary: `${BG_CLASSES.button.primary} ${BG_CLASSES.button.primaryHover} text-white ${SHADOW_CLASSES.button.primary}`,
+    outline: "border-2 border-red-500 text-red-400 hover:bg-red-500/10 hover:border-red-400",
+    gradient: `${BG_CLASSES.button.gradient} ${BG_CLASSES.button.gradientHover} text-white ${SHADOW_CLASSES.button.gradient}`
   }[variant];
 
   const sizeClass = {

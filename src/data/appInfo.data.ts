@@ -67,10 +67,9 @@ export const APP_INFO = {
   name: "Vampyr App",
   tagline: "Tu compañero definitivo para dominar el castillo",
   description: "Lleva tu experiencia de juego al siguiente nivel con estadísticas detalladas, rankings globales y más.",
-  platforms: ["Android", "iOS"],
+  platforms: ["Android"],
   downloadLinks: {
     android: "#",
-    ios: "#",
-    qrCode: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vampyrgame.com/download"
+    ios: "#"
   }
 };

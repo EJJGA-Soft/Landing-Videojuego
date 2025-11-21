@@ -1,5 +1,6 @@
 import SectionHeader from "../shared/SectionHeader";
 import { GAME_MECHANICS } from "../../data/gameInfo.data";
+import { BG_CLASSES, BORDER_CLASSES, SHADOW_CLASSES, TYPOGRAPHY } from "../../constants/theme.constants";
 
 export default function MechanicsSection() {
   return (
@@ -8,19 +9,19 @@ export default function MechanicsSection() {
         <SectionHeader 
           title="Mecánicas del Juego"
           subtitle="Una experiencia única que combina lo mejor del RogueLike con la exploración Metroidvania"
-          gradient="redPurple"
+          gradient="redred"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {GAME_MECHANICS.map((mechanic) => (
             <div 
               key={mechanic.id}
-              className="group relative bg-gradient-to-br from-purple-950/40 via-red-950/30 to-black/80 p-8 rounded-xl border border-purple-900/30 hover:border-red-500/50 shadow-lg hover:shadow-red-600/30 transition-all duration-300 hover:scale-105"
+              className={`group relative ${BG_CLASSES.cardGradient} p-8 rounded-xl ${BORDER_CLASSES.hover} ${SHADOW_CLASSES.hover} transition-all duration-300 hover:scale-105`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
               
               <div className="relative">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-transparent mb-4 group-hover:scale-105 transition-transform duration-200">
+                <h3 className={`text-2xl font-bold ${TYPOGRAPHY.gradient.redLight} mb-4 group-hover:scale-105 transition-transform duration-200`}>
                   {mechanic.title}
                 </h3>
                 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BG_CLASSES, BORDER_CLASSES, SHADOW_CLASSES } from '../../constants/theme.constants';
 
 interface FeatureCardProps {
   title: string;
@@ -18,15 +19,15 @@ export default function FeatureCard({
   return (
     <div className={`
       group relative 
-      bg-gradient-to-br from-purple-950/40 via-black/60 to-black/80 
+      ${BG_CLASSES.card} 
       p-6 md:p-8 rounded-xl 
-      border border-purple-900/30 
-      ${hover ? 'hover:border-purple-500/50 hover:shadow-purple-600/30 hover:scale-105' : ''}
-      shadow-lg shadow-purple-900/20 
+      ${BORDER_CLASSES.default} 
+      ${hover ? `${BORDER_CLASSES.hover} ${SHADOW_CLASSES.hover} hover:scale-105` : ''}
+      ${SHADOW_CLASSES.base} 
       transition-all duration-300
     `}>
       {gradient && (
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 via-purple-600/10 to-purple-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 via-red-600/10 to-red-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
       )}
       
       <div className="relative">
@@ -34,7 +35,7 @@ export default function FeatureCard({
           <div className="text-5xl mb-4">{icon}</div>
         )}
         
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-purple-200 transition-colors duration-200">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-red-200 transition-colors duration-200">
           {title}
         </h3>
         

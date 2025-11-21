@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaUsers, FaSkull, FaTrophy } from 'react-icons/fa';
 import SectionHeader from "../shared/SectionHeader";
+import { GRADIENTS } from "../../constants/theme.constants";
 
 interface GlobalStats {
   players: {
@@ -88,15 +89,15 @@ export default function StatsSection() {
 
   if (loading) {
     return (
-      <section id="stats" className="scroll-mt-20 bg-gradient-to-b from-black via-purple-950/10 to-black">
+      <section id="stats" className={`scroll-mt-20 ${GRADIENTS.sectionAlt}`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <SectionHeader 
             title="Estadísticas Globales"
             subtitle="Cargando datos del juego..."
-            gradient="redPurple"
+            gradient="redred"
           />
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-red-500"></div>
           </div>
         </div>
       </section>
@@ -105,12 +106,12 @@ export default function StatsSection() {
 
   if (error || !stats) {
     return (
-      <section id="stats" className="py-20 md:py-32 scroll-mt-20 bg-gradient-to-b from-black via-purple-950/10 to-black">
+      <section id="stats" className="py-20 md:py-32 scroll-mt-20 bg-gradient-to-b from-black via-red-950/10 to-black">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <SectionHeader 
             title="Estadísticas Globales"
             subtitle="No se pudieron cargar las estadísticas del juego"
-            gradient="redPurple"
+            gradient="redred"
           />
           <div className="text-center text-red-400">
             <p>{error || 'Error desconocido'}</p>
@@ -121,12 +122,12 @@ export default function StatsSection() {
   }
 
   return (
-    <section id="stats" className="py-20 md:py-32 scroll-mt-20 bg-gradient-to-b from-black via-purple-950/10 to-black">
+    <section id="stats" className="py-20 md:py-32 scroll-mt-20 bg-gradient-to-b from-black via-red-950/10 to-black">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader 
           title="Estadísticas Globales"
           subtitle="Descubre cómo está jugando la comunidad de cazadores de vampiros"
-          gradient="redPurple"
+          gradient="redred"
         />
 
         {/* Players Overview */}
@@ -136,7 +137,7 @@ export default function StatsSection() {
             title="Total de Jugadores"
             value={stats.players.total}
             subtitle={`${stats.players.linked} vinculados`}
-            color="purple"
+            color="red"
           />
           <StatCard
             icon={<FaSkull className="text-5xl" />}
@@ -150,13 +151,13 @@ export default function StatsSection() {
             title="Logros Desbloqueados"
             value={stats.totals.achievements}
             subtitle={`${stats.averages.achievements} por jugador`}
-            color="purple"
+            color="red"
           />
         </div>
 
         {/* Averages */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-transparent mb-8 text-center">
+          <h3 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-red-300 bg-clip-text text-transparent mb-8 text-center">
             Promedios del Juego
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -181,7 +182,7 @@ export default function StatsSection() {
 
         {/* Top Players */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-transparent mb-8 text-center">
+          <h3 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-red-300 bg-clip-text text-transparent mb-8 text-center">
             Mejores Jugadores
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -189,7 +190,7 @@ export default function StatsSection() {
                           title="Nivel Más Alto"
                           player={stats.topPlayers.highestLevel.username}
                           value={`Nivel ${stats.topPlayers.highestLevel.level}`}
-                          color="purple" icon={undefined}            />
+                          color="red" icon={undefined}            />
             <TopPlayerCard
               title="Más Eliminaciones"
               player={stats.topPlayers.mostKills.username}
@@ -201,7 +202,7 @@ export default function StatsSection() {
                           title="Más Tiempo Jugado"
                           player={stats.topPlayers.longestPlayTime.username}
                           value={stats.topPlayers.longestPlayTime.playTimeFormatted}
-                          color="purple" icon={undefined}            />
+                          color="red" icon={undefined}            />
             <TopPlayerCard
               
                           title="Más Logros"
@@ -213,7 +214,7 @@ export default function StatsSection() {
 
         {/* Level Distribution */}
         <div>
-          <h3 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-transparent mb-8 text-center">
+          <h3 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-red-300 bg-clip-text text-transparent mb-8 text-center">
             Distribución de Niveles
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -244,12 +245,11 @@ interface StatCardProps {
   title: string;
   value: number;
   subtitle: string;
-  color: 'purple' | 'red';
+  color: 'red';
 }
 
 function StatCard({ icon, title, value, subtitle, color }: StatCardProps) {
   const colorClasses = {
-    purple: 'from-purple-500/20 to-purple-900/20 border-purple-500/30 text-purple-400',
     red: 'from-red-500/20 to-red-900/20 border-red-500/30 text-red-400'
   };
 
@@ -272,9 +272,9 @@ interface AverageStatProps {
 
 function AverageStat({ label, value }: AverageStatProps) {
   return (
-    <div className="bg-gradient-to-br from-red-900/20 via-purple-900/20 to-red-900/20 border border-purple-500/20 backdrop-blur-sm rounded-lg p-5 text-center hover:border-purple-500/40 transition-all duration-300">
+    <div className="bg-gradient-to-br from-red-900/20 via-red-900/20 to-red-900/20 border border-red-500/20 backdrop-blur-sm rounded-lg p-5 text-center hover:border-red-500/40 transition-all duration-300">
       <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">{label}</p>
-      <p className="text-3xl font-bold bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-transparent">{value}</p>
+      <p className="text-3xl font-bold bg-gradient-to-r from-red-300 to-red-300 bg-clip-text text-transparent">{value}</p>
     </div>
   );
 }
@@ -284,13 +284,12 @@ interface TopPlayerCardProps {
   title: string;
   player: string;
   value: string;
-  color: 'red' | 'purple';
+  color: 'red';
 }
 
 function TopPlayerCard({ icon, title, player, value, color }: TopPlayerCardProps) {
   const colorClasses = {
-    red: 'from-red-500/20 to-red-900/20 border-red-500/30 text-red-400',
-    purple: 'from-purple-500/20 to-purple-900/20 border-purple-500/30 text-purple-400'
+    red: 'from-red-500/20 to-red-900/20 border-red-500/30 text-red-400'
   };
 
   return (
@@ -304,7 +303,6 @@ function TopPlayerCard({ icon, title, player, value, color }: TopPlayerCardProps
     </div>
   );
 }
-
 interface LevelDistributionCardProps {
   level: number;
   count: number;
@@ -322,11 +320,11 @@ function LevelDistributionCard({ level, count, total }: LevelDistributionCardPro
       </div>
       <div className="w-full bg-gray-700/30 rounded-full h-4 mb-2 overflow-hidden">
         <div 
-          className="bg-gradient-to-r from-purple-500 to-red-500 h-full rounded-full transition-all duration-500"
+          className="bg-gradient-to-r from-red-500 to-red-500 h-full rounded-full transition-all duration-500"
           style={{ width: `${percentage}%` }}
         ></div>
       </div>
-      <p className="text-center text-purple-400 font-semibold">{percentage}%</p>
+      <p className="text-center text-red-400 font-semibold">{percentage}%</p>
     </div>
   );
 }

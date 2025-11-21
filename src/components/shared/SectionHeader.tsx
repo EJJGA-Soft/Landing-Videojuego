@@ -4,7 +4,7 @@ interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   align?: "left" | "center" | "right";
-  gradient?: "redred" | "redWhite" | "redWhite";
+  gradient?: "redred" | "redWhite" | "purpleWhite";
 }
 
 export default function SectionHeader({ 
@@ -22,7 +22,7 @@ export default function SectionHeader({
   const gradientClass = {
     redred: TYPOGRAPHY.gradient.redRed,
     redWhite: TYPOGRAPHY.gradient.redWhite200,
-    redWhiteAlt: TYPOGRAPHY.gradient.redWhite300
+    purpleWhite: TYPOGRAPHY.gradient.purpleWhite
   }[gradient];
 
   return (

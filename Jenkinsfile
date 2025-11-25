@@ -5,9 +5,11 @@ pipeline {
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_IMAGE = 'ejjgasoft/vampyr-landing'
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
+
         SONARQUBE_SERVER = 'SonarQubeServer'
-        SONARQUBE_SCANNER = 'SonnarQube'
-        SONAR_LOGIN = credentials('node-token')   
+        SONARQUBE_SCANNER = tool 'SonnarQube'
+        SONAR_LOGIN = credentials('node-token')
+
         DEPLOY_SERVER = '74.208.227.171'
         DEPLOY_USER = 'root'
         DEPLOY_PATH = '/home/VAMPYR'
@@ -38,17 +40,14 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                script {
-                    def scannerHome = tool name: env.SONARQUBE_SCANNER, type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                    withSonarQubeEnv(env.SONARQUBE_SERVER) {
-                        sh """
-                            ${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=vampyr-landing \
-                            -Dsonar.sources=src \
-                            -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts \
-                            -Dsonar.login=${SONAR_LOGIN}      # <---- TOKEN AQUÍ
-                        """
-                    }
+                withSonarQubeEnv(env.SONARQUBE_SERVER) {
+                    sh '''
+                        $SONARQUBE_SCANNER/bin/sonar-scanner \
+                        -Dsonar.projectKey=vampyr-landing \
+                        -Dsonar.sources=src \
+                        -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts \
+                        -Dsonar.login=$SONAR_LOGIN
+                    '''
                 }
             }
         }

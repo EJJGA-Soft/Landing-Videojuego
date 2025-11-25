@@ -41,18 +41,17 @@ pipeline {
             steps {
                 withSonarQubeEnv(SONARQUBE_SERVER) {
                     sh """
+                        # Verificar que existe el directorio src
+                        ls -la
+                        
                         docker run --rm \
-                            --network host \
+                            --network sonar-network \
                             -e SONAR_HOST_URL=\${SONAR_HOST_URL} \
                             -e SONAR_TOKEN=\${SONAR_AUTH_TOKEN} \
-                            -v "${WORKSPACE}:/usr/src" \
+                            -v "\${WORKSPACE}:/usr/src" \
                             -w /usr/src \
                             sonarsource/sonar-scanner-cli:latest \
-                            sonar-scanner \
-                                -Dsonar.projectKey=vampyr-landing \
-                                -Dsonar.sources=src \
-                                -Dsonar.token=\${SONAR_AUTH_TOKEN} \
-                                -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts
+                            sonar-scanner -Dsonar.token=\${SONAR_AUTH_TOKEN}
                     """
                 }
             }

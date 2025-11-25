@@ -27,13 +27,12 @@ pipeline {
         }
         
         stage('Install Dependencies') {
-            tools {
-                nodejs 'NodeJS 25.2.1'
-            }
             steps {
+                nodejs('NodeJS') {
                 sh 'npm ci'
-            }
-        }
+             } 
+          }
+     }
         
         stage('SonarQube Analysis') {
             steps {

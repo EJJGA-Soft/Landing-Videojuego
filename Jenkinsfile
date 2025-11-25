@@ -40,21 +40,20 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv(SONARQUBE_SERVER) {
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-                        sh """
-                            docker run --rm \
-                                --network host \
-                                -e SONAR_HOST_URL=${SONAR_HOST_URL} \
-                                -e SONAR_LOGIN=\$SONAR_TOKEN \
-                                -v "${WORKSPACE}:/usr/src" \
-                                -w /usr/src \
-                                sonarsource/sonar-scanner-cli:latest \
-                                sonar-scanner \
-                                    -Dsonar.projectKey=vampyr-landing \
-                                    -Dsonar.sources=src \
-                                    -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts
-                        """
-                    }
+                    sh """
+                        docker run --rm \
+                            --network host \
+                            -e SONAR_HOST_URL=\${SONAR_HOST_URL} \
+                            -e SONAR_TOKEN=\${SONAR_AUTH_TOKEN} \
+                            -v "${WORKSPACE}:/usr/src" \
+                            -w /usr/src \
+                            sonarsource/sonar-scanner-cli:latest \
+                            sonar-scanner \
+                                -Dsonar.projectKey=vampyr-landing \
+                                -Dsonar.sources=src \
+                                -Dsonar.token=\${SONAR_AUTH_TOKEN} \
+                                -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts
+                    """
                 }
             }
         }

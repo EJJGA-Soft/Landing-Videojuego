@@ -5,7 +5,7 @@ pipeline {
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_IMAGE = 'ejjgasoft/vampyr-landing'
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
-        SONARQUBE_SERVER = 'SonarQubeServer'   
+        SONARQUBE_SERVER = 'sonarqube'   
         DEPLOY_SERVER = '74.208.227.171'
         DEPLOY_USER = 'root'
         DEPLOY_PATH = '/home/VAMPYR'

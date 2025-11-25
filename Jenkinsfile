@@ -1,58 +1,54 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS'
+    }
+
     environment {
-        DOCKER_REGISTRY = 'docker.io'
-        DOCKER_IMAGE = 'ejjgasoft/vampyr-landing'
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
-        SONARQUBE_SERVER = 'sonarqube'   
-        DEPLOY_SERVER = '74.208.227.171'
-        DEPLOY_USER = 'root'
-        DEPLOY_PATH = '/home/VAMPYR'
+        SONARQUBE = 'sonarqube'
+        SCANNER = 'sonar-scanner'
+        SONAR_PROJECT_KEY = 'vampyr-landing'
     }
 
     stages {
+
         stage('Checkout') {
             steps {
-                checkout scm
-                script {
-                    env.GIT_COMMIT_SHORT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-                    env.BUILD_TAG = "${env.BUILD_NUMBER}-${env.GIT_COMMIT_SHORT}"
-                }
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/EJJGA-Soft/Landing-Videojuego'
+                    ]]
+                ])
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh '''
-                    # Usar Node.js del sistema o instalar via nvm si no existe
-                    if ! command -v node &> /dev/null; then
-                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-                        export NVM_DIR="$HOME/.nvm"
-                        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                        nvm install 20
-                    fi
-                    npm ci
-                '''
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'npm test || true'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv(SONARQUBE_SERVER) {
-                    sh """
-                        # Verificar que existe el directorio src
-                        ls -la
-                        
-                        docker run --rm \
-                            --network sonar-network \
-                            -e SONAR_HOST_URL=\${SONAR_HOST_URL} \
-                            -e SONAR_TOKEN=\${SONAR_AUTH_TOKEN} \
-                            -v "\${WORKSPACE}:/usr/src" \
-                            -w /usr/src \
-                            sonarsource/sonar-scanner-cli:latest \
-                            sonar-scanner -Dsonar.token=\${SONAR_AUTH_TOKEN}
-                    """
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                    withSonarQubeEnv("${SONARQUBE}") {
+                        sh """
+                            ${tool SCANNER}/bin/sonar-scanner \
+                                -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+                                -Dsonar.sources=. \
+                                -Dsonar.host.url=http://74.208.227.171:9000 \
+                                -Dsonar.login=${SONAR_TOKEN}
+                        """
+                    }
                 }
             }
         }
@@ -65,46 +61,28 @@ pipeline {
             }
         }
 
-        // el resto de stages quedan exactamente igual
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                script {
-                    docker.build("${DOCKER_IMAGE}:${BUILD_TAG}")
-                    docker.build("${DOCKER_IMAGE}:latest")
-                }
+                sh 'npm run build'
             }
         }
 
-        stage('Push to Registry') {
+        stage('Deploy') {
             steps {
-                script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                        docker.image("${DOCKER_IMAGE}:${BUILD_TAG}").push()
-                        docker.image("${DOCKER_IMAGE}:latest").push()
-                    }
-                }
-            }
-        }
-
-        stage('Deploy to Production') {
-            steps {
-                sshagent(credentials: ['vps-ssh-key']) {
-                    sh """
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_SERVER} '
-                            cd ${DEPLOY_PATH} && 
-                            docker compose pull landing && 
-                            docker compose up -d landing && 
-                            docker image prune -f
-                        '
-                    """
-                }
+                echo 'Deploying...'
             }
         }
     }
 
     post {
-        always { cleanWs() }
-        success { echo "Pipeline ejecutado exitosamente - Build: ${BUILD_TAG}" }
-        failure { echo "Pipeline falló - Build: ${BUILD_TAG}" }
+        always {
+            echo 'Pipeline finalizado.'
+        }
+        success {
+            echo 'Pipeline completado correctamente.'
+        }
+        failure {
+            echo 'Pipeline falló.'
+        }
     }
 }

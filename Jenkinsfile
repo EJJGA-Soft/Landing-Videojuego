@@ -24,9 +24,16 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                nodejs('NodeJS') {
-                    sh 'npm ci'
-                }
+                sh '''
+                    # Usar Node.js del sistema o instalar via nvm si no existe
+                    if ! command -v node &> /dev/null; then
+                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+                        export NVM_DIR="$HOME/.nvm"
+                        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+                        nvm install 20
+                    fi
+                    npm ci
+                '''
             }
         }
 

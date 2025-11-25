@@ -7,6 +7,7 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         SONARQUBE_SERVER = 'SonarQubeServer'
         SONARQUBE_SCANNER = 'SonnarQube'
+        SONAR_LOGIN = credentials('node-token')   
         DEPLOY_SERVER = '74.208.227.171'
         DEPLOY_USER = 'root'
         DEPLOY_PATH = '/home/VAMPYR'
@@ -44,7 +45,8 @@ pipeline {
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=vampyr-landing \
                             -Dsonar.sources=src \
-                            -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts
+                            -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/dev-dist/**,**/*.test.tsx,**/*.test.ts \
+                            -Dsonar.login=${SONAR_LOGIN}      # <---- TOKEN AQUÍ
                         """
                     }
                 }

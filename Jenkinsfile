@@ -27,6 +27,9 @@ pipeline {
         }
         
         stage('Install Dependencies') {
+            tools {
+                nodejs 'NodeJS 25.2.1'
+            }
             steps {
                 sh 'npm ci'
             }

@@ -74,7 +74,7 @@ pipeline {
                     ]) {
                         sh '''
                             sshpass -p "${SSH_PASS}" ssh -o StrictHostKeyChecking=no ${SSH_USER}@${DEPLOY_HOST} << 'ENDSSH'
-                                cd /home/VAMPYR/BACKEND_API_VAMPYR/
+                                cd /home/VAMPYR/Landing-Videojuego/
                                 git pull origin main
                                 cd ..
 

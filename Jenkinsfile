@@ -16,6 +16,20 @@ pipeline {
     }
 
     stages {
+        stage('Stop') {
+            when {
+                not {
+                    branch 'main'
+                }
+            }
+            steps {
+                echo "Push recibido, pero NO es main. Cancelando pipeline."
+                script { 
+                    currentBuild.result = 'ABORTED'
+                    error("Stop: No es main")
+                }
+            }
+        }
 
         stage('Checkout') {
             steps {

@@ -5,6 +5,10 @@ pipeline {
         nodejs 'NodeJS'
     }
 
+    triggers {
+        githubPush()
+    }
+
     environment {
         SONARQUBE = 'sonarqube'
         SCANNER = 'sonar-scanner'

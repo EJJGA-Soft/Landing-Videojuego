@@ -44,7 +44,7 @@ export default function AppSection() {
               />
             </div>
             <p className="text-red-400 text-sm mt-4 font-medium">
-              Disponible para Android
+              Disponible para Android <br></br><span className='underline'><a href='https://www.mediafire.com/file/e71f3mmia9dl7m2/AppVampyr.apk/file' target='_blank' rel='noopener'>Descarga aquí.</a></span>
             </p>
           </div>
         </div>
